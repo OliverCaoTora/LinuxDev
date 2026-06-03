@@ -33,7 +33,7 @@ int main(int argc, char **argv)
     printf("fd_1 = %d\n", fd_1);
     // printf("fd_2 = %d\n", fd_2);
 
-    dup2(fd_1, 1); // relocated fd_1 to 1
+    dup2(fd_1, 1); // relocated 1 to fd_1
     printf("hello, world\n"); // printf default output to 1
     // That mean now printf will print direct to fd_1
 
