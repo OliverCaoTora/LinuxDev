@@ -37,14 +37,6 @@ int main(int argc, char **argv)
     printf("hello, world\n"); // printf default output to 1
     // That mean now printf will print direct to fd_1
 
-    // read(fd_1, buf, 1);
-    // read(fd_2, buf2, 1);
-    // read(fd_3, buf3, 1);
-
-    // // printf("data from fd_1: %c\n", buf[0]);
-    // printf("data from fd_2: %c\n", buf2[0]);
-    // printf("data from fd_3: %c\n", buf3[0]);
-
     while(1){
         sleep(5);
     }
