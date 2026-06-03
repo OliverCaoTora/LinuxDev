@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/04_fileIO/05_process_excel/process_excel",
+            "args": ["score.csv", "result.csv"],
+            "stopAtEntry": false,
+            // "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/04_fileIO/05_process_excel",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "C/C++: gcc build active file"
+        },
+    ]
+}
