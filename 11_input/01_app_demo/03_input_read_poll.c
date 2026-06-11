@@ -128,6 +128,7 @@ int main(int argc, char** argv)
                     回到外层 poll
                */
               /*同时注意内圈while使用非阻塞read*/
+              /*PS: select和Poll很相像，只是select是老方法*/
             }
         }
         else if (ret == 0)
