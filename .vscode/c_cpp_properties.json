@@ -4,7 +4,8 @@
             "name": "ARM",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/book/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/lib/gcc/arm-buildroot-linux-gnueabihf/7.5.0/include"
+                "/home/book/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/lib/gcc/arm-buildroot-linux-gnueabihf/7.5.0/include",
+                "/home/book/Desktop/01_all_series_quickstart/04_嵌入式Linux应用开发基础知识/source/11_input/02_tslib/tslib-1.21/tmp/include/**"
             ],
             "defines": [],
             "compilerPath": "/home/book/100ask_imx6ull-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin/arm-buildroot-linux-gnueabihf-gcc",
