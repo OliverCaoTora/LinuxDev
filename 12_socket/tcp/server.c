@@ -3,6 +3,7 @@
 #include <netinet/in.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <stdio.h>
 #include <unistd.h>
 
 #include <string.h>
@@ -51,7 +52,8 @@ int main (int argc, char **argv)
 
     while (1)
     {
-        iSocketClient = accept(iSocketServer, (struct sockaddr*)&tSocketClientAddr, sizeof(struct sockaddr_in));
+        int iAddrLen_in = sizeof(struct sockaddr_in);
+        iSocketClient = accept(iSocketServer, (struct sockaddr*)&tSocketClientAddr, &iAddrLen_in);
         if (iSocketClient != -1)
         {
             iClientNum++;
@@ -70,12 +72,13 @@ int main (int argc, char **argv)
                     }
                     else
                     {
-                        buffer[RecvLen] = "\0";
+                        buffer[RecvLen] = '\0';
                         printf("Recieved msg from Client %d: %s\n", iClientNum, buffer);
                     }
                 }
             }
         }
     }
+    close(iSocketServer);
     return 0; 
 }
