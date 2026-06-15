@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <signal.h>
 
 #include <string.h>
 
@@ -30,6 +31,8 @@ int main (int argc, char **argv)
     int RecvLen;
     
     int iClientNum = -1;
+
+    signal(SIGCHLD,SIG_IGN);
 
     iSocketServer = socket(AF_INET, SOCK_STREAM, 0);
     if (iSocketServer == -1)
