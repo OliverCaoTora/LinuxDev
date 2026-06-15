@@ -8,6 +8,13 @@
 
 #include <string.h>
 
+/* socket
+* bind
+* listen
+* accept
+* send/recv
+*/
+
 #define SERVER_PORT 8888
 
 int main (int argc, char **argv)
