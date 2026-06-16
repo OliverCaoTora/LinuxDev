@@ -1,4 +1,5 @@
 #include <stdio.h>
+// pthread is .so
 #include <pthread.h>
 #include <unistd.h>
 
