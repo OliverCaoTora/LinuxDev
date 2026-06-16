@@ -2,18 +2,22 @@
 #include <pthread.h>
 #include <unistd.h>
 
+#include <semaphore.h>
+
 static char g_buf[1000];
 
-static int g_hasData = 0;
+// static int g_hasData = 0;
+
+static sem_t g_sem;
 
 static void *my_thread_func(void *data)
 {
     while(1)
     { 
         // sleep(1); 
-        while(g_hasData == 0);
+        // while(g_hasData == 0);
+        sem_wait(&g_sem);
         printf("revc: %s\n", g_buf);
-        g_hasData = 0;
     }
 
     /* 线程函数返回的是一个 void *，也就是一个指针值。这个指针指向的对象，在主线程通过 pthread_join() 取到并使用时，必须仍然有效。
@@ -36,6 +40,8 @@ int main(int argc, char **argv)
     pthread_t tid;
     int ret;
 
+    sem_init(&g_sem, 0, 0);
+
     // create thread
     ret = pthread_create(&tid, NULL, my_thread_func, NULL);
     
@@ -48,7 +54,7 @@ int main(int argc, char **argv)
     while(1)
     {
         fgets(g_buf, 1000, stdin);
-        g_hasData = 1;
+        sem_post(&g_sem);
     }
 
     return 0;
