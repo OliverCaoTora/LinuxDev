@@ -4,6 +4,8 @@
 
 #include <semaphore.h>
 
+#include <string.h>
+
 static char g_buf[1000];
 
 // static int g_hasData = 0;
@@ -45,6 +47,8 @@ int main(int argc, char **argv)
     pthread_t tid;
     int ret;
 
+    char l_buffer[1000];
+
     sem_init(&g_sem, 0, 0);
 
     // create thread
@@ -57,9 +61,11 @@ int main(int argc, char **argv)
     }
 
     while(1)
-    {
+    {   
+        fgets(l_buffer, 1000, stdin);
+
         pthread_mutex_lock(&g_tMutex);
-        fgets(g_buf, 1000, stdin);
+        memcpy(g_buf, l_buffer, 1000);
         pthread_mutex_unlock(&g_tMutex);
 
         sem_post(&g_sem);
