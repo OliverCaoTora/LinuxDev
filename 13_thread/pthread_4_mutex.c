@@ -10,6 +10,8 @@ static char g_buf[1000];
 
 static sem_t g_sem;
 
+static pthread_mutex_t g_tMutex = PTHREAD_MUTEX_INITIALIZER;
+
 static void *my_thread_func(void *data)
 {
     while(1)
@@ -17,7 +19,10 @@ static void *my_thread_func(void *data)
         // sleep(1); 
         // while(g_hasData == 0);
         sem_wait(&g_sem);
+
+        pthread_mutex_lock(&g_tMutex);
         printf("revc: %s\n", g_buf);
+        pthread_mutex_unlock(&g_tMutex);
     }
 
     /* 线程函数返回的是一个 void *，也就是一个指针值。这个指针指向的对象，在主线程通过 pthread_join() 取到并使用时，必须仍然有效。
@@ -53,7 +58,10 @@ int main(int argc, char **argv)
 
     while(1)
     {
+        pthread_mutex_lock(&g_tMutex);
         fgets(g_buf, 1000, stdin);
+        pthread_mutex_unlock(&g_tMutex);
+
         sem_post(&g_sem);
     }
 
